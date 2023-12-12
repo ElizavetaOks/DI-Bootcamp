@@ -1,84 +1,29 @@
--- Exercise: Dvdrental Database
--- 1. In the dvdrental database write a query to select all the columns from the “customer” table.
-SELECT * FROM customer
+-- CREATE TABLE students (
+--  	id SERIAL PRIMARY KEY,
+--  	last_name VARCHAR(50) NOT NULL,
+--  	first_name VARCHAR(50) NOT NULL,
+--  	birth_date date NOT NULL)
 
--- 2.Write a query to display the names (first_name, last_name) using an alias named “full_name”.
-SELECT (first_name,last_name) AS full_name
-FROM customer
+-- INSERT INTO students(first_name, last_name, birth_date)
+-- VALUES ('Marc', 'Benichou', '1998-11-02'),
+--  	('Yoan', 'Cohen', '2010-12-03'),
+--  	('Lea', 'Benichou', '1987-07-27'),
+--  	('Amelia', 'Dux', '1996-04-07'),
+--  	('David', 'Grez', '2003-06-14'),
+--  	('Omer', 'Simpson', '1980-10-03')
 
--- 3.Lets get all the dates that accounts were created. 
--- Write a query to select all the create_date from the “customer” table (there should be no duplicates).
-SELECT DISTINCT create_date FROM customer
+-- INSERT INTO students(first_name, last_name, birth_date)
+-- VALUES ('Elizaveta', 'Oks', '1986-12-18')
 
--- 4.Write a query to get all the customer details from the customer table, 
--- it should be displayed in descending order by their first name.
-SELECT * FROM customer
-ORDER BY first_name DESC
+-- SELECT * FROM students;
+-- SELECT first_name, last_name FROM students;
+-- SELECT first_name, last_name FROM students WHERE id = 2
+-- SELECT first_name, last_name FROM students WHERE last_name = 'Benichou' AND first_name = 'Marc';
+-- SELECT first_name, last_name FROM students WHERE last_name = 'Benichou' OR first_name = 'Marc';
+-- SELECT first_name, last_name FROM students WHERE first_name like '%a%'
+-- SELECT first_name, last_name FROM students WHERE first_name ilike 'a%'
+-- SELECT first_name, last_name FROM students WHERE first_name like '%a'
+-- SELECT first_name, last_name FROM students WHERE first_name like '%a_'
+-- SELECT first_name, last_name FROM students WHERE id = 1 OR id = 3
 
--- 5. Write a query to get the film ID, title, description, year of release and rental rate
--- in ascending order according to their rental rate.
-SELECT film_id, title, description, release_year, rental_rate
-FROM film
-ORDER BY rental_rate ASC
-
--- 6. Write a query to get the address, and the phone number of all customers living in the Texas district, 
--- these details can be found in the “address” table.
-SELECT address, phone FROM address
-WHERE district = 'Texas'
-
--- 7. Write a query to retrieve all movie details where the movie id is either 15 or 150.
-SELECT * FROM film
-WHERE film_id BETWEEN 15 AND 150
-
--- 8.Write a query which should check if your favorite movie exists in the database. 
--- Have your query get the film ID, title, description, length and the rental rate, 
--- these details can be found in the “film” table.
-SELECT film_id, title, description, length, rental_rate FROM film
-WHERE title = 'Titanic'
-
--- 9. No luck finding your movie? Maybe you made a mistake spelling the name.
--- Write a query to get the film ID, title, description, length and the rental rate
--- of all the movies starting with the two first letters of your favorite movie.
-SELECT film_id, title, description, length, rental_rate FROM film
-WHERE title ILIKE 'Ti%'
-
--- 10. Write a query which will find the 10 cheapest movies.
-SELECT title,rental_rate FROM film
-ORDER BY rental_rate
-LIMIT 10
-
--- 11. Not satisfied with the results. Write a query which will find the next 10 cheapest movies.
--- Bonus: Try to not use LIMIT.
-SELECT title,rental_rate FROM film
-ORDER BY rental_rate
-OFFSET 10 ROWS
-FETCH NEXT 10 ROWS ONLY
-
--- 12. Write a query which will join the data in the customer table and the payment table. 
--- You want to get the first name and last name from the curstomer table, as well as the amount 
--- and the date of every payment made by a customer, ordered by their id (from 1 to…).
-SELECT c.customer_id, c.first_name, c.last_name, p.payment_date, p.amount FROM customer AS c
-JOIN payment AS p
-ON c.customer_id = p.customer_id
-ORDER BY c.customer_id
-
--- 13. You need to check your inventory. Write a query to get all the movies which are not in inventory.
-SELECT film.film_id, film.title FROM film
-LEFT JOIN inventory
-ON film.film_id = inventory.film_id
-WHERE inventory.film_id IS NULL
-
--- 14. Write a query to find which city is in which country.
-SELECT city.city, country.country FROM city
-LEFT JOIN country
-ON city.country_id = country.country_id
-
--- 15. Bonus: You want to be able to see how your sellers have been doing? 
--- Write a query to get the customer’s id, names (first and last), 
--- the amount and the date of payment ordered by the id of the staff member who sold them the dvd.
-SELECT p.staff_id , c.customer_id, c.first_name, c.last_name, p.amount, p.payment_date 
-FROM customer AS c
-JOIN payment AS p
-ON c.customer_id = p.customer_id
-ORDER BY p.staff_id 
-
+-- SELECT * FROM students WHERE birth_date >= '2000-01-01'
