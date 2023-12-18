@@ -4,6 +4,7 @@
 # word_3 = input('Please enter one more word \n')
 # print(f'Your words are {word_1}, {word_2} and {word_3}')
 
+#####Almost correct. There is a simpler approach which is to use slicing (first_string[::-1]).
 # 2. Write a list that contains 2 strings. Print the second string in uppercase and
 # then the first string backwards.
 # my_list = ['Hello World', 'I love Python']
@@ -14,6 +15,7 @@
 # print(reversed_word)
 # print(my_list[1].upper())
 
+##########Incorrect. you are currently printing all names in the list. To print every other name, you should use slicing (my_list[::2]).
 # 3. Write code for a list that contains four names and prints every other name.
 # my_list = ['Elizabeth', 'Aaron', 'Daniel', 'Aria']
 # for name in my_list:
@@ -30,6 +32,7 @@
 # your age, your gender, your favorite food. Be sure to use appropriate keys
 my_dict = {'my_name':'Elizabeth', 'my_age':'36', 'my_gender':'female', 'my_favirote_food':'sushi'}
 
+####Almost correct. The condition checks if the alcohol level is greater than 0.5% but the prompt specifies "less than 0.5 %." It should be if alcohol_level >= 0.5:
 # 6. A user is allowed to drive home if their blood alcohol is less than 0.5 %. Ask a
 # user for their blood alcohol level and if they're not sober, tell them to take a cab.
 # alcohol_level = float(input('What is your blood alcohol level? \n'))
@@ -51,6 +54,8 @@ my_dict = {'my_name':'Elizabeth', 'my_age':'36', 'my_gender':'female', 'my_favir
 # for i in range(10,21):
 #     print(i)
 
+
+###########Almost correct. It's simpler and more efficient to use range(1, 21, 2) to directly iterate over odd numbers.
 # 9. Write a loop to print every odd number between 1 and 20.
 # for i in range(1, 20):
 #     if i%2 != 0:
